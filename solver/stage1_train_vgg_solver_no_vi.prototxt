@@ -1,0 +1,14 @@
+net: "/home/RSI2017-ljm/Mic/fashion-landmarks/FData/Img/upper/newData/new_stage1_no_vi.prototxt"
+test_iter: 172
+test_interval:150
+base_lr: 0.0005
+lr_policy: "step"
+gamma: 0.1
+stepsize: 750
+display: 1
+max_iter: 8000
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 1000
+snapshot_prefix: "snapshot/"
+solver_mode: GPU

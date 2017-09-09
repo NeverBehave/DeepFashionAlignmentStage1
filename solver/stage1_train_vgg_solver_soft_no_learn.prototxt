@@ -1,0 +1,14 @@
+net: "/home/RSI2017-ljm/Mic/fashion-landmarks/FData/Img/upper/structure/train/new_stage1_soft_fix.prototxt"
+test_iter: 344
+test_interval: 20
+base_lr: 0.001
+lr_policy: "step"
+gamma: 0.1
+stepsize: 1500
+display: 1
+max_iter: 4000
+momentum: 0.9
+weight_decay: 0.005
+snapshot: 500
+snapshot_prefix: "/home/RSI2017-ljm/Mic/fashion-landmarks/FData/Img/upper/snapshot/current"
+solver_mode: GPU

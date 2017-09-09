@@ -1,0 +1,550 @@
+name: "DFA_full_stage1_TRAIN"
+
+layer {
+  name: "data"
+     type: "HDF5Data"
+     top: "data"
+     top: "label"
+     include {
+      phase: TRAIN
+      }
+     hdf5_data_param {
+     source: "/home/RSI2017-ljm/Mic/fashion-landmarks/FData/Img/upper/newData/train.txt"
+     batch_size: 20
+}
+}
+
+layer {
+  name: "data"
+     type: "HDF5Data"
+     top: "data"
+     top: "label"
+     include {
+      phase: TEST
+      }
+     hdf5_data_param {
+     source: "/home/RSI2017-ljm/Mic/fashion-landmarks/FData/Img/upper/newData/val.txt"
+     batch_size: 20
+}
+}
+
+# Processing Layers
+
+layer {
+  bottom: "data"
+  top: "conv1_1"
+  name: "conv1_1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv1_1"
+  top: "conv1_1"
+  name: "relu1_1"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv1_1"
+  top: "conv1_2"
+  name: "conv1_2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv1_2"
+  top: "conv1_2"
+  name: "relu1_2"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv1_2"
+  top: "pool1"
+  name: "pool1"
+  type: "Pooling"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  bottom: "pool1"
+  top: "conv2_1"
+  name: "conv2_1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv2_1"
+  top: "conv2_1"
+  name: "relu2_1"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv2_1"
+  top: "conv2_2"
+  name: "conv2_2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv2_2"
+  top: "conv2_2"
+  name: "relu2_2"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv2_2"
+  top: "pool2"
+  name: "pool2"
+  type: "Pooling"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  bottom: "pool2"
+  top: "conv3_1"
+  name: "conv3_1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv3_1"
+  top: "conv3_1"
+  name: "relu3_1"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv3_1"
+  top: "conv3_2"
+  name: "conv3_2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv3_2"
+  top: "conv3_2"
+  name: "relu3_2"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv3_2"
+  top: "conv3_3"
+  name: "conv3_3"
+  type: "Convolution"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv3_3"
+  top: "conv3_3"
+  name: "relu3_3"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv3_3"
+  top: "pool3"
+  name: "pool3"
+  type: "Pooling"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  bottom: "pool3"
+  top: "conv4_1"
+  name: "conv4_1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv4_1"
+  top: "conv4_1"
+  name: "relu4_1"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv4_1"
+  top: "conv4_2"
+  name: "conv4_2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv4_2"
+  top: "conv4_2"
+  name: "relu4_2"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv4_2"
+  top: "conv4_3"
+  name: "conv4_3"
+  type: "Convolution"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv4_3"
+  top: "conv4_3"
+  name: "relu4_3"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv4_3"
+  top: "pool4"
+  name: "pool4"
+  type: "Pooling"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  bottom: "pool4"
+  top: "conv5_1"
+  name: "conv5_1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv5_1"
+  top: "conv5_1"
+  name: "relu5_1"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv5_1"
+  top: "conv5_2"
+  name: "conv5_2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv5_2"
+  top: "conv5_2"
+  name: "relu5_2"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv5_2"
+  top: "conv5_3"
+  name: "conv5_3"
+  type: "Convolution"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  bottom: "conv5_3"
+  top: "conv5_3"
+  name: "relu5_3"
+  type: "ReLU"
+}
+layer {
+  bottom: "conv5_3"
+  top: "pool5"
+  name: "pool5"
+  type: "Pooling"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  bottom: "pool5"
+  top: "fc6"
+  name: "fc6"
+  type: "InnerProduct"
+  inner_product_param {
+    num_output: 4096
+  }
+}
+
+
+layer {
+  bottom: "fc6"
+  top: "fc6"
+  name: "relu6"
+  type: "ReLU"
+}
+layer {
+  bottom: "fc6"
+  top: "fc6"
+  name: "drop6"
+  type: "Dropout"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  bottom: "fc6"
+  top: "fc7"
+  name: "fc7"
+  type: "InnerProduct"
+  inner_product_param {
+    num_output: 4096
+  }
+}
+layer {
+  bottom: "fc7"
+  top: "fc7"
+  name: "relu7"
+  type: "ReLU"
+}
+layer {
+  bottom: "fc7"
+  top: "fc7"
+  name: "drop7"
+  type: "Dropout"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+
+# Target Layers
+layer {
+  name: "fc8_softlabel"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "fc8_softlabel"
+  inner_product_param {
+    num_output:20
+  }
+}
+
+layer {
+  name: "fc8_landmarks"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "fc8_landmarks"
+  inner_product_param {
+    num_output: 12
+  }
+}
+
+
+layer {
+  name: "fc8_visibility_1"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "fc8_visibility_1"
+  inner_product_param {
+    num_output:3
+  }
+}
+layer {
+  name: "fc8_visibility_2"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "fc8_visibility_2"
+  inner_product_param {
+    num_output: 3
+  }
+}
+layer {
+  name: "fc8_visibility_3"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "fc8_visibility_3"
+  inner_product_param {
+    num_output: 3
+  }
+}
+layer {
+  name: "fc8_visibility_4"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "fc8_visibility_4"
+  inner_product_param {
+    num_output: 3
+  }
+}
+layer {
+  name: "fc8_visibility_5"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "fc8_visibility_5"
+  inner_product_param {
+    num_output: 3
+  }
+}
+layer {
+  name: "fc8_visibility_6"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "fc8_visibility_6"
+  inner_product_param {
+    num_output: 3
+  }
+}
+
+layer {
+  name: "slicer_label"
+  type: "Slice"
+  bottom: "label"
+  ## Example of label with a shape N x 3 x 1 x 1
+  top: "loss_p_label"
+  top: "loss_landmarks"
+  top: "loss_visibility_1"
+  top: "loss_visibility_2"
+  top: "loss_visibility_3"
+  top: "loss_visibility_4"
+  top: "loss_visibility_5"
+  top: "loss_visibility_6"
+  slice_param {
+    # axis: 1
+    slice_point: 20
+    slice_point: 32
+    slice_point: 33
+    slice_point: 34
+    slice_point: 35
+    slice_point: 36
+    slice_point: 37
+  }
+}
+
+layer {
+  name: "loss_p_label"
+  type: "EuclideanLoss"
+  bottom: "loss_p_label"
+  bottom: "fc8_softlabel"
+  loss_weight: 1
+  top: "p_label"
+}
+
+layer {
+	name: "loss_landmarks"
+    type: "EuclideanLoss"
+    bottom: "fc8_landmarks"
+    bottom: "loss_landmarks"
+    loss_weight: 1
+    top: "landmark"
+}
+
+layer {
+  name: "loss_visibility_1"
+  type: "MultinomialLogisticLoss"
+  bottom: "fc8_visibility_1"
+  bottom: "loss_visibility_1"
+  loss_weight: 1
+  loss_param {
+    normalization: BATCH_SIZE
+  }
+  top: "visibility_1"
+}
+
+layer {
+  name: "loss_visibility_2"
+  type: "MultinomialLogisticLoss"
+  bottom: "fc8_visibility_2"
+  bottom: "loss_visibility_2"
+  loss_weight: 1
+  loss_param {
+    normalization: BATCH_SIZE
+  }
+  top: "visibility_2"
+}
+
+layer {
+  name: "loss_visibility_3"
+  type: "MultinomialLogisticLoss"
+  bottom: "fc8_visibility_3"
+  bottom: "loss_visibility_3"
+  loss_weight: 1
+  loss_param {
+    normalization: BATCH_SIZE
+  }
+  top: "visibility_3"
+}
+
+layer {
+  name: "loss_visibility_4"
+  type: "MultinomialLogisticLoss"
+  bottom: "fc8_visibility_4"
+  bottom: "loss_visibility_4"
+  loss_weight: 1
+  loss_param {
+    normalization: BATCH_SIZE
+  }
+  top: "visibility_4"
+}
+
+layer {
+  name: "loss_visibility_5"
+  type: "MultinomialLogisticLoss"
+  bottom: "fc8_visibility_5"
+  bottom: "loss_visibility_5"
+  loss_weight: 1
+  loss_param {
+    normalization: BATCH_SIZE
+  }
+  top: "visibility_5"
+}
+
+layer {
+  name: "loss_visibility_6"
+  type: "MultinomialLogisticLoss"
+  bottom: "fc8_visibility_6"
+  bottom: "loss_visibility_6"
+  loss_weight: 1
+  loss_param {
+    normalization: BATCH_SIZE
+  }
+  top: "visibility_6"
+}
